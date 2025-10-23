@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo_2310"
         mc:Ignorable="d"
-        Title="MainWindow" Height="480" Width="1500">
+        Title="MainWindow" Height="720" Width="1500">
     <StackPanel>
-        <ListBox Name="BoxEquip" Height="600"/>
+        <ListBox Name="BoxEquip" Height="720"/>
     </StackPanel>
 </Window>
