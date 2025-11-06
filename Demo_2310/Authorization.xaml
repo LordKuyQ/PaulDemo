@@ -1,0 +1,27 @@
+﻿<Window x:Class="Demo_2310.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo_2310"
+        mc:Ignorable="d"
+        Title="Authorization" Height="450" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Margin="10">
+            <TextBlock Text="Authorization" FontSize="35" HorizontalAlignment="Center"/>
+            <TextBlock Text="Login" FontSize="25"/>
+            <TextBox x:Name="Login" FontSize="20"/>
+            <TextBlock  FontSize="25" Text="Password"/>
+            <TextBox x:Name="Password" FontSize="20"/>
+            <Button x:Name="EnterButton" Content="Enter" Click="EnterClick"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="10">
+            <Button x:Name="GuestButton" Content="Enter how guest" Click="GuestClick" BorderThickness="0" Background="Transparent"/>
+            <Button x:Name="RegisterButton" Content="Register" Click="RegisterClick" BorderThickness="0" Background="Transparent"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -21,15 +21,17 @@ namespace Demo_2310
     /// </summary>
     public partial class UserControlEquipPanel : UserControl
     {
+        public Equioment Equipment { get; set; } = new Equioment();
         public UserControlEquipPanel(Equioment equipment)
         {
             InitializeComponent();
             DataContext = equipment;
+            Equipment = equipment;
 
 
             if (equipment.Discount > 15)
             {
-                BoxDiscont.Background = new BrushConverter().ConvertFrom("#2E8B57") as SolidColorBrush;
+                TextDiscont.Foreground = new BrushConverter().ConvertFrom("#2E8B57") as SolidColorBrush;
             }
             if (equipment.Discount > 0)
             {

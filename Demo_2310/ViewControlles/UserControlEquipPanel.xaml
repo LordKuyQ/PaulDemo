@@ -27,24 +27,24 @@
                 <TextBlock FontWeight="Bold">
             <Run Text="{Binding Name}"/>
             <Run Text=" | "/>
-            <Run Text="{Binding Type}"/>
+            <!--<Run Text="{Binding Type}"/>-->
                 </TextBlock>
                 <TextBlock>
             <Run Text="Производитель:"/>
-            <Run Text="{Binding Producer}"/>
+            <!--<Run Text="{Binding Producer}"/>-->
                 </TextBlock>
                 <TextBlock>
             <Run Text="Поставщик:"/>
-            <Run Text="{Binding Provider}"/>
+            <!--<Run Text="{Binding Provider}"/>-->
                 </TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>
                 <Run Text="Единица измерения:"/>
                 <Run Text="{Binding UnitRent}"/>
+                <Run Text="   "/>
                     </TextBlock>
                     <TextBlock  Name="BoxCount">
-                    <Run Text="количество:"/>
-                <Run Text="{Binding CountFree}"/>
+                        <Run Text="{Binding CountFree}"/>
                     </TextBlock>
                 </StackPanel>
                 <TextBlock TextWrapping="Wrap">
@@ -68,11 +68,15 @@
                         <Run Name="BoxNewPrice"/>
                     </TextBlock>
                 </Border>
-                <Border Name="BoxDiscont" Grid.Row="1" BorderBrush="Black" Margin="5" BorderThickness="1">
-                    <TextBlock Text="{Binding Discount}"
+                <Border Grid.Row="1" BorderBrush="Black" Margin="5" BorderThickness="1">
+                    <TextBlock 
+                       Name="TextDiscont"
                        FontSize="30"
                        HorizontalAlignment="Center" 
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center">
+                               <Run Text="{Binding Discount}"/>
+                               <Run Text="%"/>
+                    </TextBlock>
                 </Border>
             </Grid>
         </Grid>

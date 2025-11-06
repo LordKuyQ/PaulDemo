@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:Demo_2310"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1500">
-    <StackPanel>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="AddEquipButton" Content="Add Equip" Click="AddEquipClick"/>
+            <Button x:Name="DeleteEquipButton" Content="Delete Equip" Click="DeleteEquipClick"/>
+        </StackPanel>
         <ListBox Name="BoxEquip" Height="720"/>
     </StackPanel>
 </Window>

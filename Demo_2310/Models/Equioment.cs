@@ -41,7 +41,14 @@ public partial class Equioment
     {
         get
         {
-            return @"G:\6SEMESTR6\paul\Paul_Demo\Paul_demo_23_10\Demo_2310\Demo_2310\bin\Debug\Images\" + Photo;
+            if (Photo == null)
+            {
+                return @"G:\6SEMESTR6\paul\Paul_Demo\Paul_demo_23_10\Demo_2310\Demo_2310\bin\Debug\Images\picture.png";
+            }
+            else
+            {
+                return @"G:\6SEMESTR6\paul\Paul_Demo\Paul_demo_23_10\Demo_2310\Demo_2310\bin\Debug\Images\" + Photo;
+            }
         }
     }
 
