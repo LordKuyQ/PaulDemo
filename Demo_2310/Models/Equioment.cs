@@ -36,20 +36,4 @@ public partial class Equioment
     public virtual Provider IdProviderNavigation { get; set; } = null!;
 
     public virtual TypeEquipment IdTypeEquipmentNavigation { get; set; } = null!;
-
-    public string PhotoPath
-    {
-        get
-        {
-            if (Photo == null)
-            {
-                return @"G:\6SEMESTR6\paul\Paul_Demo\Paul_demo_23_10\Demo_2310\Demo_2310\bin\Debug\Images\picture.png";
-            }
-            else
-            {
-                return @"G:\6SEMESTR6\paul\Paul_Demo\Paul_demo_23_10\Demo_2310\Demo_2310\bin\Debug\Images\" + Photo;
-            }
-        }
-    }
-
 }

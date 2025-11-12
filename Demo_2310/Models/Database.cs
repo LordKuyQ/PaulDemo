@@ -36,7 +36,8 @@ public partial class Database : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         string connect = "Server=dbsrv\\AG2024;Database=demo_p_NDA;Trusted_Connection=True; TrustServerCertificate=True";
-        optionsBuilder.UseSqlServer(connect);
+        string connect_home = "Server=uglybastard\\SQLEXPRESS;Database=paul_basa;Trusted_Connection=True; TrustServerCertificate=True";
+        optionsBuilder.UseSqlServer(connect_home);
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -18,9 +18,9 @@
             <!--Левый компонент-->
             <StackPanel Grid.Column="0"
                 Margin="5">
-                <Image Source="{Binding PhotoPath}"
+                <!--<Image Source=""
                MaxHeight="300"
-               MaxWidth="300"/>
+               MaxWidth="300"/>-->
             </StackPanel>
             <!--Центральный компонент-->
             <StackPanel Grid.Column="1">

@@ -55,14 +55,34 @@ namespace Demo_2310
                 {
                     using (var context = new Database())
                     {
-                        context.Equioments.Add(addWindow.AddedEquipment);
+                        var newEquipment = new Equioment
+                        {
+                            Articul = addWindow.AddedEquipment.Articul,
+                            Name = addWindow.AddedEquipment.Name,
+                            CostRent = addWindow.AddedEquipment.CostRent,
+                            UnitRent = addWindow.AddedEquipment.UnitRent,
+                            Description = addWindow.AddedEquipment.Description,
+                            Discount = addWindow.AddedEquipment.Discount,
+                            CountFree = addWindow.AddedEquipment.CountFree,
+                            Photo = addWindow.AddedEquipment.Photo,
+                            IdProducer = addWindow.AddedEquipment.IdProducer,
+                            IdProvider = addWindow.AddedEquipment.IdProvider,
+                            IdTypeEquipment = addWindow.AddedEquipment.IdTypeEquipment
+                        };
+
+                        context.Equioments.Add(newEquipment);
                         context.SaveChanges();
                     }
                     LoadEquip();
                 }
-                catch (Exception ex)
+                catch (Exception ex) 
                 {
-                    MessageBox.Show($"Load error in main window: {ex.Message}");
+                    string errorMessage = ex.Message;
+                    if (ex.InnerException != null)
+                    {
+                        errorMessage += "\nInner exception: " + ex.InnerException.Message;
+                    }
+                    MessageBox.Show($"Load error in main window: {errorMessage}");
                 }
             }
         }

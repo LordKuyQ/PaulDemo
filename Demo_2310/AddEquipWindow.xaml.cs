@@ -89,6 +89,7 @@ namespace Demo_2310
                         var producer = Producer.SelectedItem as Producer;
                         var provider = Provider.SelectedItem as Provider;
                         var typeEquipment = TypeEquipment.SelectedItem as TypeEquipment;
+
                         AddedEquipment.Articul = Articul.Text;
                         AddedEquipment.Name = Name.Text;
                         AddedEquipment.CostRent = double.Parse(CostRent.Text);
@@ -96,6 +97,11 @@ namespace Demo_2310
                         AddedEquipment.Description = Description.Text;
                         AddedEquipment.Discount = double.Parse(Discount.Text);
                         AddedEquipment.CountFree = double.Parse(CountFree.Text);
+
+                        AddedEquipment.IdProducer = producer.Id;
+                        AddedEquipment.IdProvider = provider.Id;
+                        AddedEquipment.IdTypeEquipment = typeEquipment.Id;
+
                         AddedEquipment.IdProducerNavigation = producer;
                         AddedEquipment.IdProviderNavigation = provider;
                         AddedEquipment.IdTypeEquipmentNavigation = typeEquipment;
