@@ -29,6 +29,14 @@ namespace Demo_2310
             DataContext = this;
             Load();
         }
+        public AddEquipWindow(Equioment selectedProduct)
+        {
+            InitializeComponent();
+            _context = new Database();
+            DataContext = this;
+            AddedEquipment = selectedProduct;
+            LoadEdit();
+        }
 
         private void Load()
         {
@@ -47,6 +55,26 @@ namespace Demo_2310
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка загрузки: {ex.Message}");
+            }
+        }
+        private void LoadEdit()
+        {
+            try
+            {
+                IdEditPanel.Visibility = Visibility.Visible;
+                TBId.Text = AddedEquipment.Id.ToString();
+                Articul.Text = AddedEquipment.Articul;
+                Name.Text=AddedEquipment.Name;
+                CostRent.Text = AddedEquipment.CostRent.ToString();
+                UnitRent.Text = AddedEquipment.UnitRent;
+                Description.Text = AddedEquipment.Description;
+                Discount.Text = AddedEquipment.Discount.ToString();
+                CountFree.Text = AddedEquipment.CountFree.ToString();
+                Load();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Edit data loading error: {ex.Message}");
             }
         }
 

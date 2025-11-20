@@ -26,48 +26,77 @@ namespace Demo_2310
 
         private void EnterClick(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                using (var context = new Database())
-                {                    
-                    var Admin = context.Users.Where(x => x.Login == Login.Text && x.Pass == Password.Text && x.IdRole == 1).Any();
-                    var Manager = context.Users.Where(x => x.Login == Login.Text && x.Pass == Password.Text && x.IdRole == 2).Any();
-                    var Clients = context.Users.Where(x => x.Login == Login.Text && x.Pass == Password.Text && x.IdRole == 3).Any();
-
-                    if (Admin)
+                EnterButton.IsEnabled = false;
+                if (Login.Text != null && Password.Text != null)
+                {
+                    using (var context = new Database())
                     {
-                        MainWindow adminMainWindow = new MainWindow();
-                        MessageBox.Show("admin");
-                        adminMainWindow.Show();
-                        this.Close();
+                        var user = context.Users.FirstOrDefault(x => x.Login == Login.Text && x.Pass == Password.Text);
+                        if (user == null)
+                        {
+                            MessageBox.Show("Invalid data");
+                            return;
+                        }
+                        var roleAdmin = context.Roles.FirstOrDefault(q => q.Role1 == "Администратор");
+                        if (roleAdmin == null)
+                        {
+                            MessageBox.Show("Role 'Администратор' not found");
+                            return;
+                        }
+                        var roleManager = context.Roles.FirstOrDefault(q => q.Role1 == "Менеджер");
+                        if (roleManager == null)
+                        {
+                            MessageBox.Show("Role 'Менеджер' not found");
+                            return;
+                        }
+                        var roleClient = context.Roles.FirstOrDefault(q => q.Role1 == "Авторизированный клиент");
+                        if (roleClient == null)
+                        {
+                            MessageBox.Show("Role 'Авторизированный клиент' not found");
+                            return;
+                        }
+                        if (user.IdRole == roleAdmin.Id)
+                        {
+                            MainWindow adminMainWindow = new MainWindow(user);
+                            MessageBox.Show("admin");
+                            adminMainWindow.Show();
+                            this.Close();
+                        }
+                        else if (user.IdRole == roleManager.Id)
+                        {
+                            MainWindow managerMainWindow = new MainWindow(user);
+                            MessageBox.Show("manager");
+                            managerMainWindow.Show();
+                            this.Close();
+                        }
+                        else if (user.IdRole == roleClient.Id)
+                        {
+                            MainWindow clientMainWindow = new MainWindow(user);
+                            MessageBox.Show("client");
+                            clientMainWindow.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid role");
+                        }
                     }
-                    else if (Manager)
-                    {
-                        MainWindow managerMainWindow = new MainWindow();
-                        MessageBox.Show("manager");
-                        managerMainWindow.Show();
-                        this.Close();
-                    }
-                    else if (Clients)
-                    {
-                        MainWindow clientMainWindow = new MainWindow();
-                        MessageBox.Show("client");
-                        clientMainWindow.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalide data");
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalide data");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Load error: {ex.Message}");
             }
-
-
+            finally
+            {
+                EnterButton.IsEnabled = true;
+            }
         }
 
         private void GuestClick(object sender, RoutedEventArgs e)
@@ -87,14 +116,30 @@ namespace Demo_2310
                 {
                     using (var context = new Database())
                     {
-                        context.Users.Add(regWindow.user);
+                        User newUser = new User
+                        {
+                            Fio = regWindow.addedUser.Fio,
+                            Login = regWindow.addedUser.Login,
+                            Pass = regWindow.addedUser.Pass,
+                            IdRole = regWindow.addedUser.IdRole
+                        };
+                        context.Users.Add(newUser);
                         context.SaveChanges();
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Load error: {ex.Message}");
+                    string errorMessage = ex.Message;
+                    if (ex.InnerException != null)
+                    {
+                        errorMessage += "\nInner exception: " + ex.InnerException.Message;
+                    }
+                    MessageBox.Show($"Load error in Auth window: {errorMessage}");
                 }
+            }
+            else
+            {
+                //todo
             }
         }
     }

@@ -18,24 +18,24 @@
             <!--Левый компонент-->
             <StackPanel Grid.Column="0"
                 Margin="5">
-                <!--<Image Source=""
+                <Image Name="ImageS"
                MaxHeight="300"
-               MaxWidth="300"/>-->
+               MaxWidth="300"/>
             </StackPanel>
             <!--Центральный компонент-->
             <StackPanel Grid.Column="1">
                 <TextBlock FontWeight="Bold">
             <Run Text="{Binding Name}"/>
             <Run Text=" | "/>
-            <!--<Run Text="{Binding Type}"/>-->
+            <Run Text="{Binding TypeName}"/>
                 </TextBlock>
                 <TextBlock>
             <Run Text="Производитель:"/>
-            <!--<Run Text="{Binding Producer}"/>-->
+            <Run Text="{Binding ProducerName}"/>
                 </TextBlock>
                 <TextBlock>
             <Run Text="Поставщик:"/>
-            <!--<Run Text="{Binding Provider}"/>-->
+            <Run Text="{Binding ProviderName}"/>
                 </TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>

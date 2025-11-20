@@ -19,7 +19,7 @@ namespace Demo_2310
     public partial class Registration : Window
     {
         private readonly Database _context;
-        public User user { get; set; } = new User();
+        public User addedUser { get; set; } = new User();
         public Registration()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Demo_2310
                 if (Login.Text != null && Password.Text != null &&
                     Fio.Text != null)
                 {
-                    user = new User
+                    addedUser = new User
                     {
                         IdRole = 3,
                         Fio = Fio.Text,

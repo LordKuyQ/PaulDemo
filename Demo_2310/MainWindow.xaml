@@ -5,12 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo_2310"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1500">
-    <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="AddEquipButton" Content="Add Equip" Click="AddEquipClick"/>
-            <Button x:Name="DeleteEquipButton" Content="Delete Equip" Click="DeleteEquipClick"/>
+        Title="Список оборудования" Height="720" Width="1500">
+    <DockPanel>
+        <!--выход и фио-->
+        <DockPanel DockPanel.Dock="Top">
+            <TextBlock  DockPanel.Dock="Right" Margin="5">
+                <Run Text="Добро пожаловать, "/>
+                <Run Name="RunUserName"/>
+            </TextBlock>
+            <Button DockPanel.Dock="Left" Content="Выход" Click="ExitButton" Margin="5"/>
+            <Grid/>
+        </DockPanel>
+        <!--роль, круд и заказы-->
+        <DockPanel DockPanel.Dock="Bottom">
+            <TextBlock DockPanel.Dock="Right" Margin="5" Name="TextBlockUserRole" Visibility="Collapsed">
+                <Run Text="Роль пользователя: "/>
+                <Run Name="RunUserRole"/>
+            </TextBlock>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Name="PanelCRUD" Visibility="Collapsed">
+                <Button x:Name="AddEquipButton" Content="Добавить оборудование" Click="AddEquipClick"/>
+                <Button x:Name="DeleteEquipButton" Content="Удалить оборудование" Click="DeleteEquipClick"/>
+            </StackPanel>
+            <Button DockPanel.Dock="Left" Name="OpenOrdersButton" Content="Список заказов" Click="OpenOrdersButtonClick"
+                    Visibility="Collapsed"/>
+            <Grid/>
+        </DockPanel>
+        <!--работа с данными-->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"
+                    Name="PanelFind"
+                    Visibility="Collapsed">
+            <TextBox Name="BoxSearch" Width="150" TextChanged="Search" />
+            <Label Content="Поиск"/>
+
+            <RadioButton Name="UpRadio" Content="по возрастанию" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="SortCheck"/>
+            <RadioButton Name="DownRadio" Content="по убыванию" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="SortCheck"/>
+
+            <ComboBox Name="ProducersComboBox" Width="150" SelectedIndex="0" SelectionChanged="Filter" DisplayMemberPath="Prodecer1">
+            </ComboBox>
         </StackPanel>
-        <ListBox Name="BoxEquip" Height="720"/>
-    </StackPanel>
+        <!--юзер контрол-->
+        <ListBox Name="BoxEquip" Height="640"/>
+    </DockPanel>
 </Window>

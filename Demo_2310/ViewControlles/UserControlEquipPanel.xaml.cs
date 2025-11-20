@@ -22,12 +22,28 @@ namespace Demo_2310
     public partial class UserControlEquipPanel : UserControl
     {
         public Equioment Equipment { get; set; } = new Equioment();
+        public string ProducerName => Equipment.IdProducerNavigation?.Producer1;
+        public string ProviderName => Equipment.IdProviderNavigation?.Provider1;
+        public string TypeName => Equipment.IdTypeEquipmentNavigation?.Type;
         public UserControlEquipPanel(Equioment equipment)
         {
             InitializeComponent();
             DataContext = equipment;
             Equipment = equipment;
 
+            try
+            {
+                var path = string.IsNullOrEmpty(equipment.Photo) ? "Defaults/picture.png" : $"Save/{equipment.Photo}";
+                var p = @$"pack://application:,,,/Images/{path}";
+                Uri uri = new Uri(p);
+                ImageS.Source = new BitmapImage(uri);
+            }
+            catch (Exception ex)
+            {
+                var p = @$"pack://application:,,,/Images/Defaults/picture.png";
+                Uri uri = new Uri(p);
+                ImageS.Source = new BitmapImage(uri);
+            }
 
             if (equipment.Discount > 15)
             {

@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo_2310"
         mc:Ignorable="d"
-        Title="Add_equip" Height="900" Width="450">
+        Title="Окно оборудования" Height="900" Width="450">
     <StackPanel>
         <Button x:Name="BackButton" Content="Back" Click="Back" Margin="10,10,400,10"/>
         <StackPanel Orientation="Vertical" Margin="10">
             <TextBlock Text="Add equip" FontSize="35" HorizontalAlignment="Center"/>
+            <StackPanel Name="IdEditPanel" Visibility="Collapsed">
+                <TextBlock Text="Id" FontSize="25"/>
+                <TextBlock Name="TBId" FontSize="20"/>
+            </StackPanel>
             <TextBlock Text="Articul" FontSize="25"/>
             <TextBox x:Name="Articul" FontSize="20"/>
             <TextBlock Text="Name" FontSize="25"/>

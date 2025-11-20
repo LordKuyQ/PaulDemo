@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo_2310"
         mc:Ignorable="d"
-        Title="Authorization" Height="450" Width="450">
+        Title="Авторизация" Height="450" Width="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
